@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome!</h2>
+        <input type="text" placeholder="Username" id="username">
+        <input type="password" placeholder="Password" id="password">
+        <button id="login-btn">Login</button>
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+
+    <script>
+        document.getElementById("login-btn").addEventListener("click", function(e) {
+            e.preventDefault(); // Prevent actual form submission
+
+            let loginBox = document.querySelector(".login-container");
+            loginBox.classList.add("shake");
+
+            setTimeout(() => {
+                loginBox.classList.remove("shake");
+            }, 500); // Remove shake animation after 0.5 seconds
+        });
+    </script>
+</body>
+</html>
