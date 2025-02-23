@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome to the Dashboard</h2>
+        
+        <!-- Button container -->
+        <div class="button-container">
+            <button onclick="handleClick('option1')">Option 1</button>
+            <button onclick="handleClick('option2')">Option 2</button>
+            <button onclick="handleClick('option3')">Option 3</button>
+        </div>
+    </div>
+
+    <script>
+        function handleClick(option) {
+            alert("You clicked " + option);
+        }
+    </script>
+</body>
+</html>
