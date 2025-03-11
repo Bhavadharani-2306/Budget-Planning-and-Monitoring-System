@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashboard.css"> <!-- Linking external CSS -->
 </head>
 <body>
-    <div class="dashboard-container">
-        <h2>Welcome to the Dashboard</h2>
-        
-        <!-- Button container -->
-        <div class="button-container">
-            <button onclick="handleClick('option1')">Option 1</button>
-            <button onclick="handleClick('option2')">Option 2</button>
-            <button onclick="handleClick('option3')">Option 3</button>
+
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Welcome to the Dashboard</h1>
+        <div class="buttons">
+            <button>Students</button>
+            <button>Employees</button>
+            <button>Business Owners</button>
         </div>
     </div>
-
     <script>
-        function handleClick(option) {
-            alert("You clicked " + option);
+        function applyLanguage() {
+            const lang = localStorage.getItem("language") || "en";
+
+            const translations = {
+                en: { dashboardTitle: "Dashboard", welcomeMessage: "Welcome to your dashboard!" },
+                ta: { dashboardTitle: "டாஷ்போர்டு", welcomeMessage: "உங்கள் டாஷ்போர்டுக்கு வரவேற்கிறோம்!" },
+                hi: { dashboardTitle: "डैशबोर्ड", welcomeMessage: "आपके डैशबोर्ड में आपका स्वागत है!" }
+            };
+
+            document.getElementById("dashboardTitle").innerText = translations[lang].dashboardTitle;
+            document.getElementById("welcomeMessage").innerText = translations[lang].welcomeMessage;
         }
+
+        document.addEventListener("DOMContentLoaded", applyLanguage);
     </script>
 </body>
 </html>

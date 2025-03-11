@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2 id="loginTitle">Login Page</h2>
+            
+            <div class="form-group">
+                <label for="username" id="usernameLabel">Username</label>
+                <input type="text" id="username" name="username">
+                <span class="error-message" id="usernameError">Username is required</span>
+            </div>
+    
+            <div class="form-group">
+                <label for="password" id="passwordLabel">Password</label>
+                <input type="password" id="password" name="password">
+                <span class="error-message" id="passwordError">Password is required</span>
+                <span class="error-message" id="loginError">Incorrect username or password</span>
+            </div>
+    
+            <button id="loginButton">Login</button>
+        </div>
+    </div>
+
+    <script>
+        function applyLanguage() {
+            const lang = localStorage.getItem("language") || "en";
+
+            const translations = {
+                en: { loginTitle: "Login Page", usernameLabel: "Username", passwordLabel: "Password", loginButton: "Login", usernameError: "Username is required", passwordError: "Password is required", loginError: "Incorrect username or password" },
+                ta: { loginTitle: "உள்நுழைவு பக்கம்", usernameLabel: "பயனர் பெயர்", passwordLabel: "கடவுச்சொல்", loginButton: "உள்நுழைய", usernameError: "பயனர் பெயர் தேவை", passwordError: "கடவுச்சொல் தேவை", loginError: "தவறான பயனர் பெயர் அல்லது கடவுச்சொல்" },
+                hi: { loginTitle: "लॉगिन पृष्ठ", usernameLabel: "उपयोगकर्ता नाम", passwordLabel: "पासवर्ड", loginButton: "लॉग इन करें", usernameError: "उपयोगकर्ता नाम आवश्यक है", passwordError: "पासवर्ड आवश्यक है", loginError: "गलत उपयोगकर्ता नाम या पासवर्ड" }
+            };
+
+            document.getElementById("loginTitle").innerText = translations[lang].loginTitle;
+            document.getElementById("usernameLabel").innerText = translations[lang].usernameLabel;
+            document.getElementById("passwordLabel").innerText = translations[lang].passwordLabel;
+            document.getElementById("loginButton").innerText = translations[lang].loginButton;
+            document.getElementById("usernameError").innerText = translations[lang].usernameError;
+            document.getElementById("passwordError").innerText = translations[lang].passwordError;
+            document.getElementById("loginError").innerText = translations[lang].loginError;
+        }
+
+        document.addEventListener("DOMContentLoaded", applyLanguage);
+
+        document.getElementById("loginButton").addEventListener("click", function() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const usernameError = document.getElementById("usernameError");
+            const passwordError = document.getElementById("passwordError");
+            const loginError = document.getElementById("loginError");
+            let valid = true;
+
+            if (username === "") {
+                usernameError.style.display = "block";
+                valid = false;
+            } else {
+                usernameError.style.display = "none";
+            }
+
+            if (password === "") {
+                passwordError.style.display = "block";
+                valid = false;
+            } else {
+                passwordError.style.display = "none";
+            }
+
+            // Hardcoded correct credentials (for testing)
+            const correctUsername = "admin";
+            const correctPassword = "1234";
+
+            if (valid) {
+                if (username === correctUsername && password === correctPassword) {
+                    window.location.href = "dashboard.html"; // Redirect on correct login
+                } else {
+                    loginError.style.display = "block"; // Show error message for wrong credentials
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,30 +1,68 @@
-/* Apply background image to the whole page */
-body {
-    font-family: Arial, sans-serif;
+/* Reset default margins and paddings */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Background image with dark overlay */
+body {
+    background: url('background.jpg') no-repeat center center/cover;
     height: 100vh;
-    background-image: url('background.jpg'); /* Ensure the file is in the correct path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/* Move buttons to the left */
-.button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
+/* Dark overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darkening effect */
+    z-index: 1;
 }
 
-/* Center Dashboard Container */
-.dashboard-container {
+/* Centered content */
+.content {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: auto; /* This ensures it's centered */
+    color: white;
+}
+
+/* Dashboard title */
+.content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Improving visibility */
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.buttons button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.buttons button:hover {
+    background-color: white;
+    color: black;
 }
